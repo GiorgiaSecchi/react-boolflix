@@ -6,7 +6,7 @@ export const MovieContextProvider = ({ children }) => {
   const apikey = import.meta.env.VITE_TMDB_API_KEY;
   const apiUrl = import.meta.env.VITE_TMDB_API_URL;
 
-  const [movies, setMovies] = useState([]);
+  const [moviesData, setMoviesData] = useState([]);
 
   useEffect(() => {
     fetchMovies();
@@ -25,13 +25,21 @@ export const MovieContextProvider = ({ children }) => {
     fetch(url, options)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        const movies = data.map((movie) => ({
+          title: movie.title,
+          original_title: movie.original_title,
+          language: movie.original_language,
+          vote: movie.vote_average,
+        }));
+        const newMoviesData = { ...moviesData, movies };
+        setMoviesData(newMoviesData);
+        console.log(newMoviesData);
       })
       .catch((err) => console.error(err));
   };
 
   return (
-    <MovieContext.Provider value={movies}>{children}</MovieContext.Provider>
+    <MovieContext.Provider value={moviesData}>{children}</MovieContext.Provider>
   );
 };
 
