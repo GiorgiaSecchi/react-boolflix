@@ -3,8 +3,8 @@ import { createContext, useEffect, useState } from "react";
 const MovieContext = createContext();
 
 export const MovieContextProvider = ({ children }) => {
-  const apikey = import.meta.env.TMDB_API_KEY;
-  const apiUrl = import.meta.env.TMDB_API_URL;
+  const apikey = import.meta.env.VITE_TMDB_API_KEY;
+  const apiUrl = import.meta.env.VITE_TMDB_API_URL;
 
   const [movies, setMovies] = useState([]);
 
@@ -13,7 +13,7 @@ export const MovieContextProvider = ({ children }) => {
   }, []);
 
   const fetchMovies = () => {
-    const url = `https://api.themoviedb.org/3/search/movie?query=gatto`;
+    const url = `${apiUrl}?query=gatto`;
     const options = {
       method: "GET",
       headers: {
