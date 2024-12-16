@@ -9,11 +9,11 @@ export default function Searchbar() {
           <input
             className="form-control me-2"
             type="search"
-            placeholder="Search"
+            placeholder="Cerca..."
             aria-label="Search"
           />
           <button className="btn btn-danger" type="submit">
-            Search
+            Cerca
           </button>
         </form>
       </div>
