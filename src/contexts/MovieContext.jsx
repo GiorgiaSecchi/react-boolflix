@@ -13,8 +13,7 @@ export const MovieContextProvider = ({ children }) => {
   }, []);
 
   const fetchMovies = () => {
-    const url =
-      "https://api.themoviedb.org/3/search/movie?query=amore&include_adult=false&language=en-US&page=1";
+    const url = `https://api.themoviedb.org/3/search/movie?query=gatto`;
     const options = {
       method: "GET",
       headers: {
@@ -25,7 +24,15 @@ export const MovieContextProvider = ({ children }) => {
 
     fetch(url, options)
       .then((res) => res.json())
-      .then((json) => console.log(json))
+      .then((data) => {
+        console.log(data);
+      })
       .catch((err) => console.error(err));
   };
+
+  return (
+    <MovieContext.Provider value={movies}>{children}</MovieContext.Provider>
+  );
 };
+
+export const useMovieContext = () => useContext(MovieContext);
