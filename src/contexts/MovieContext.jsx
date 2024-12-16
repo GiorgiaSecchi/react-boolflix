@@ -8,11 +8,13 @@ export const MovieContextProvider = ({ children }) => {
 
   const [moviesData, setMoviesData] = useState([]);
 
-  useEffect(() => {
-    fetchMovies();
-  }, []);
+  //   useEffect(() => {
+  //     fetchMovies();
+  //   }, []);
 
-  const fetchMovies = () => {
+  const fetchMovies = (query) => {
+    if (!query.trim()) return;
+
     const url = `${apiUrl}?query=${encodeURIComponent(query)}`;
     const options = {
       method: "GET",
@@ -26,6 +28,7 @@ export const MovieContextProvider = ({ children }) => {
       .then((res) => res.json())
       .then((data) => {
         const movies = data.results.map((movie) => ({
+          id: movie.id,
           title: movie.title,
           original_title: movie.original_title,
           language: movie.original_language,
@@ -38,7 +41,9 @@ export const MovieContextProvider = ({ children }) => {
   };
 
   return (
-    <MovieContext.Provider value={moviesData}>{children}</MovieContext.Provider>
+    <MovieContext.Provider value={{ moviesData, fetchMovies }}>
+      {children}
+    </MovieContext.Provider>
   );
 };
 

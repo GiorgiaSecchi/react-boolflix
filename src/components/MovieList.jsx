@@ -1,13 +1,18 @@
-import { useContext } from "react";
+import { useMovieContext } from "../contexts/MovieContext";
 
 export default function MovieList() {
+  const { moviesData } = useMovieContext();
+
   return (
-    <ul class="list-group">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li>
+    <ul className="list-group">
+      {moviesData.map((movie, index) => (
+        <li className="list-group-item" key={index}>
+          <h3> {movie.title}</h3>
+          <h4>{movie.original_title}</h4>
+          <p>{movie.language}</p>
+          <p>{movie.vote}</p>
+        </li>
+      ))}
     </ul>
   );
 }

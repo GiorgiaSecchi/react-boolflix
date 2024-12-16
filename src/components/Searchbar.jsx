@@ -20,6 +20,8 @@ export default function Searchbar() {
             type="search"
             placeholder="Cerca..."
             aria-label="Search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
           />
           <button className="btn btn-danger" type="submit">
             Cerca

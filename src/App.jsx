@@ -7,8 +7,8 @@ import { MovieContextProvider } from "./contexts/MovieContext";
 import DefaultLayout from "./layouts/DefaultLayout";
 
 //pages
-import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
