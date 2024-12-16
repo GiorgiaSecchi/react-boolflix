@@ -14,7 +14,7 @@ export default function Searchbar() {
     <nav className="navbar bg-dark">
       <div className="container-fluid">
         <a className="navbar-brand">BOOLFIX</a>
-        <form className="d-flex" role="search">
+        <form className="d-flex" role="search" onSubmit={handleSearch}>
           <input
             className="form-control me-2"
             type="search"
