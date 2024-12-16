@@ -25,7 +25,7 @@ export const MovieContextProvider = ({ children }) => {
     fetch(url, options)
       .then((res) => res.json())
       .then((data) => {
-        const movies = data.map((movie) => ({
+        const movies = data.results.map((movie) => ({
           title: movie.title,
           original_title: movie.original_title,
           language: movie.original_language,
