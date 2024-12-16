@@ -7,10 +7,10 @@ export default function MovieList() {
     <ul className="list-group">
       {moviesData.map((movie, index) => (
         <li className="list-group-item" key={index}>
-          <h3> {movie.title}</h3>
-          <h4>{movie.original_title}</h4>
-          <p>{movie.language}</p>
-          <p>{movie.vote}</p>
+          <h5>Titolo: "{movie.title}"</h5>
+          <h6>Titolo originale: "{movie.original_title}"</h6>
+          <p>Lingua: {movie.language}</p>
+          <p>Voto: {movie.vote}</p>
         </li>
       ))}
     </ul>

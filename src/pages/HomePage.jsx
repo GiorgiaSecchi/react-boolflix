@@ -5,7 +5,7 @@ export default function HomePage() {
     <div className="container py-5">
       <h3 className="text-center">Prova a cercare un film o una serie tv!</h3>
 
-      <div>
+      <div className="mt-4 pt-4">
         <MovieList />
       </div>
     </div>
