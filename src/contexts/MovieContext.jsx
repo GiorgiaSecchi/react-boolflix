@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 
 const MovieContext = createContext();
 
@@ -13,12 +13,12 @@ export const MovieContextProvider = ({ children }) => {
   }, []);
 
   const fetchMovies = () => {
-    const url = `${apiUrl}?query=gatto`;
+    const url = `${apiUrl}?query=${encodeURIComponent(query)}`;
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: `${apikey}`,
+        Authorization: `Bearer ${apikey}`,
       },
     };
 
@@ -31,9 +31,8 @@ export const MovieContextProvider = ({ children }) => {
           language: movie.original_language,
           vote: movie.vote_average,
         }));
-        const newMoviesData = { ...moviesData, movies };
-        setMoviesData(newMoviesData);
-        console.log(newMoviesData);
+        setMoviesData(movies);
+        console.log(movies);
       })
       .catch((err) => console.error(err));
   };

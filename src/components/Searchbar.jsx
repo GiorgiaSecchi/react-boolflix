@@ -1,6 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { useMovieContext } from "../contexts/MovieContext";
 
 export default function Searchbar() {
+  const [query, setQuery] = useState("");
+  const { fetchMovies } = useMovieContext();
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    fetchMovies(query);
+  };
+
   return (
     <nav className="navbar bg-dark">
       <div className="container-fluid">
