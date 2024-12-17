@@ -48,8 +48,8 @@ export const GlobalContextProvider = ({ children }) => {
       .then((data) => {
         const tvShows = data.results.map((show) => ({
           id: show.id,
-          title: show.name,
-          original_title: show.original_name,
+          name: show.name,
+          original_name: show.original_name,
           language: show.original_language,
           vote: show.vote_average,
         }));

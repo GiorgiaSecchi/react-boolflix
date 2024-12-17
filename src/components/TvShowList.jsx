@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../contexts/GlobalContext";
 
-export default function MovieList() {
-  const { moviesData } = useGlobalContext();
+export default function TvShowList() {
+  const { tvData } = useGlobalContext();
 
   const formatLanguage = (language) => {
     if (language === "en") return "GB";
@@ -13,26 +13,26 @@ export default function MovieList() {
 
   return (
     <section>
-      <h2 className="text-light">Film:</h2>
+      <h2 className="text-light">Serie TV:</h2>
       <ul className="list-group">
-        {moviesData.map((movie) => (
-          <li className="list-group-item" key={movie.id}>
-            <h5>"{movie.title}"</h5>
+        {tvData.map((show) => (
+          <li className="list-group-item" key={show.id}>
+            <h5>"{show.name}"</h5>
             <p>
-              <strong>Titolo originale:</strong> {movie.original_title}
+              <strong>Titolo originale:</strong> {show.original_name}
             </p>
 
             <p>
-              <strong>Lingua:</strong> {movie.language.toUpperCase()}
+              <strong>Lingua:</strong> {show.language.toUpperCase()}
             </p>
 
             <img
               src={`https://flagsapi.com/${formatLanguage(
-                movie.language
+                show.language
               )}/flat/64.png`}
             ></img>
             <p>
-              <strong>Voto:</strong> {movie.vote}
+              <strong>Voto:</strong> {show.vote}
             </p>
           </li>
         ))}

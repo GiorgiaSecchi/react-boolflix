@@ -1,4 +1,5 @@
 import MovieList from "../components/MovieList";
+import TvShowList from "../components/TvShowList";
 
 export default function HomePage() {
   return (
@@ -7,6 +8,7 @@ export default function HomePage() {
 
       <div className="mt-4 pt-4">
         <MovieList />
+        <TvShowList />
       </div>
     </div>
   );
