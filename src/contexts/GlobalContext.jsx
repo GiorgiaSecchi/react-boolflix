@@ -53,6 +53,7 @@ export const GlobalContextProvider = ({ children }) => {
           original_name: show.original_name,
           language: show.original_language,
           vote: show.vote_average,
+          poster_path: show.poster_path,
         }));
         setTvData(tvShows);
         console.log("TV: ", tvShows);

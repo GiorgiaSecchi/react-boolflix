@@ -11,6 +11,12 @@ export default function TvShowList() {
     return language.toUpperCase();
   };
 
+  const buildPosterUrl = (poster) => {
+    const imageUrl = "https://image.tmdb.org/t/p/";
+    const size = "/w342";
+    return imageUrl + size + poster;
+  };
+
   return (
     <section className="mt-5">
       <h2 className="text-light">Serie TV:</h2>
@@ -33,6 +39,9 @@ export default function TvShowList() {
             ></img>
             <p>
               <strong>Voto:</strong> {show.vote}
+            </p>
+            <p>
+              <img src={buildPosterUrl(show.poster_path)} alt="" />
             </p>
           </li>
         ))}
