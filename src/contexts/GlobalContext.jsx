@@ -3,15 +3,16 @@ import { createContext, useState, useContext } from "react";
 const GlobalContext = createContext();
 
 export const GlobalContextProvider = ({ children }) => {
-  const apikey = import.meta.env.VITE_TMDB_API_KEY;
-  const apiUrl = import.meta.env.VITE_TMDB_API_URL;
+  // const apikey = import.meta.env.VITE_TMDB_API_KEY;
+  const apiUrlMovie = import.meta.env.VITE_TMDB_API_URL_MOVIE;
+  const apiUrlTV = import.meta.env.VITE_TMDB_API_URL_TV;
 
   const [moviesData, setMoviesData] = useState([]);
+  const [tvData, setTvData] = useState([]);
 
   const fetchMovies = (query) => {
     if (!query.trim()) return;
 
-    const url = `${apiUrl}?query=${query}`;
     const options = {
       method: "GET",
       headers: {
@@ -21,7 +22,11 @@ export const GlobalContextProvider = ({ children }) => {
       },
     };
 
-    fetch(url, options)
+    //# MOVIES
+
+    const urlMovie = `${apiUrlMovie}?query=${query}`;
+
+    fetch(urlMovie, options)
       .then((res) => res.json())
       .then((data) => {
         const movies = data.results.map((movie) => ({
@@ -35,10 +40,28 @@ export const GlobalContextProvider = ({ children }) => {
         console.log(movies);
       })
       .catch((err) => console.error(err));
+
+    //# TV
+    const urlTv = `${apiUrlTV}?query=${query}`;
+
+    fetch(urlTv, options)
+      .then((res) => res.json())
+      .then((data) => {
+        const tvShows = data.results.map((show) => ({
+          id: show.id,
+          title: show.name,
+          original_title: show.original_name,
+          language: show.original_language,
+          vote: show.vote_average,
+        }));
+        setTvData(tvShows);
+        console.log(tvShows);
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
-    <GlobalContext.Provider value={{ moviesData, fetchMovies }}>
+    <GlobalContext.Provider value={{ moviesData, tvData, fetchMovies }}>
       {children}
     </GlobalContext.Provider>
   );
