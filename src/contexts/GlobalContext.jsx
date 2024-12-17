@@ -34,6 +34,7 @@ export const GlobalContextProvider = ({ children }) => {
           original_title: movie.original_title,
           language: movie.original_language,
           vote: movie.vote_average,
+          poster_path: movie.poster_path,
         }));
         setMoviesData(movies);
         console.log("Film: ", movies);

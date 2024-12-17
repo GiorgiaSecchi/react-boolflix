@@ -11,6 +11,12 @@ export default function MovieList() {
     return language.toUpperCase();
   };
 
+  const buildPosterUrl = (poster) => {
+    const imageUrl = "https://image.tmdb.org/t/p/";
+    const size = "/w342";
+    return imageUrl + size + poster;
+  };
+
   return (
     <section>
       <h2 className="text-light">Film:</h2>
@@ -33,6 +39,9 @@ export default function MovieList() {
             ></img>
             <p>
               <strong>Voto:</strong> {movie.vote}
+            </p>
+            <p>
+              <img src={buildPosterUrl(movie.poster_path)} alt="" />
             </p>
           </li>
         ))}

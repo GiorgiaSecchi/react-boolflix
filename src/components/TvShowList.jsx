@@ -12,7 +12,7 @@ export default function TvShowList() {
   };
 
   return (
-    <section>
+    <section className="mt-5">
       <h2 className="text-light">Serie TV:</h2>
       <ul className="list-group">
         {tvData.map((show) => (
