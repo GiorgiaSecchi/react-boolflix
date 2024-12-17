@@ -15,7 +15,7 @@ export const MovieContextProvider = ({ children }) => {
   const fetchMovies = (query) => {
     if (!query.trim()) return;
 
-    const url = `${apiUrl}?query=${encodeURIComponent(query)}`;
+    const url = `${apiUrl}?query=${query}`;
     const options = {
       method: "GET",
       headers: {
