@@ -10,7 +10,7 @@ export const GlobalContextProvider = ({ children }) => {
   const [moviesData, setMoviesData] = useState([]);
   const [tvData, setTvData] = useState([]);
 
-  const fetchMovies = (query) => {
+  const fetchMoviesAndTv = (query) => {
     if (!query.trim()) return;
 
     const options = {
@@ -23,7 +23,6 @@ export const GlobalContextProvider = ({ children }) => {
     };
 
     //# MOVIES
-
     const urlMovie = `${apiUrlMovie}?query=${query}`;
 
     fetch(urlMovie, options)
@@ -37,7 +36,7 @@ export const GlobalContextProvider = ({ children }) => {
           vote: movie.vote_average,
         }));
         setMoviesData(movies);
-        console.log(movies);
+        console.log("Film: ", movies);
       })
       .catch((err) => console.error(err));
 
@@ -55,13 +54,13 @@ export const GlobalContextProvider = ({ children }) => {
           vote: show.vote_average,
         }));
         setTvData(tvShows);
-        console.log(tvShows);
+        console.log("TV: ", tvShows);
       })
       .catch((err) => console.error(err));
   };
 
   return (
-    <GlobalContext.Provider value={{ moviesData, tvData, fetchMovies }}>
+    <GlobalContext.Provider value={{ moviesData, tvData, fetchMoviesAndTv }}>
       {children}
     </GlobalContext.Provider>
   );

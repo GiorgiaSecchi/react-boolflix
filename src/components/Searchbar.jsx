@@ -3,7 +3,7 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function Searchbar() {
   const [query, setQuery] = useState("");
-  const { fetchMovies } = useGlobalContext();
+  const { fetchMoviesAndTv } = useGlobalContext();
 
   const handleQuery = (event) => {
     setQuery(event.target.value);
@@ -11,7 +11,7 @@ export default function Searchbar() {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    fetchMovies(query);
+    fetchMoviesAndTv(query);
   };
 
   return (
