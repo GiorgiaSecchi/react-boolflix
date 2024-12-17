@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useMovieContext } from "../contexts/MovieContext";
+import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function Searchbar() {
   const [query, setQuery] = useState("");
-  const { fetchMovies } = useMovieContext();
+  const { fetchMovies } = useGlobalContext();
 
   const handleQuery = (event) => {
     setQuery(event.target.value);

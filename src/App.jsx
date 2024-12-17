@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // contexts
-import { MovieContextProvider } from "./contexts/MovieContext";
+import { GlobalContextProvider } from "./contexts/GlobalContext";
 
 // layout
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -12,7 +12,7 @@ import HomePage from "./pages/HomePage";
 
 function App() {
   return (
-    <MovieContextProvider>
+    <GlobalContextProvider>
       <BrowserRouter>
         <Routes>
           <Route Component={DefaultLayout}>
@@ -21,7 +21,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </MovieContextProvider>
+    </GlobalContextProvider>
   );
 }
 

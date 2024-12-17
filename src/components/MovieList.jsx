@@ -1,7 +1,7 @@
-import { useMovieContext } from "../contexts/MovieContext";
+import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function MovieList() {
-  const { moviesData } = useMovieContext();
+  const { moviesData } = useGlobalContext();
 
   const formatLanguage = (language) => {
     if (language === "en") return "GB";
@@ -10,20 +10,27 @@ export default function MovieList() {
   };
 
   return (
-    <ul className="list-group">
-      {moviesData.map((movie, index) => (
-        <li className="list-group-item" key={index}>
-          <h5>Titolo: "{movie.title}"</h5>
-          <h6>Titolo originale: "{movie.original_title}"</h6>
-          <p>Lingua: {movie.language}</p>
-          <img
-            src={`https://flagsapi.com/${formatLanguage(
-              movie.language
-            )}/flat/64.png`}
-          ></img>
-          <p>Voto: {movie.vote}</p>
-        </li>
-      ))}
-    </ul>
+    <section>
+      <h2 className="text-light">Film:</h2>
+      <ul className="list-group">
+        {moviesData.map((movie) => (
+          <li className="list-group-item" key={movie.id}>
+            <h5>"{movie.title}"</h5>
+            <p>
+              <strong>Titolo originale:</strong> {movie.original_title}
+            </p>
+
+            <img
+              src={`https://flagsapi.com/${formatLanguage(
+                movie.language
+              )}/flat/64.png`}
+            ></img>
+            <p>
+              <strong>Voto:</strong> {movie.vote}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

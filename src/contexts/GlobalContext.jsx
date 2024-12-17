@@ -1,8 +1,8 @@
 import { createContext, useState, useContext } from "react";
 
-const MovieContext = createContext();
+const GlobalContext = createContext();
 
-export const MovieContextProvider = ({ children }) => {
+export const GlobalContextProvider = ({ children }) => {
   const apikey = import.meta.env.VITE_TMDB_API_KEY;
   const apiUrl = import.meta.env.VITE_TMDB_API_URL;
 
@@ -38,10 +38,10 @@ export const MovieContextProvider = ({ children }) => {
   };
 
   return (
-    <MovieContext.Provider value={{ moviesData, fetchMovies }}>
+    <GlobalContext.Provider value={{ moviesData, fetchMovies }}>
       {children}
-    </MovieContext.Provider>
+    </GlobalContext.Provider>
   );
 };
 
-export const useMovieContext = () => useContext(MovieContext);
+export const useGlobalContext = () => useContext(GlobalContext);
