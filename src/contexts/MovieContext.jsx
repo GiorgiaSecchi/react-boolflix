@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 
 const MovieContext = createContext();
 
@@ -8,10 +8,6 @@ export const MovieContextProvider = ({ children }) => {
 
   const [moviesData, setMoviesData] = useState([]);
 
-  //   useEffect(() => {
-  //     fetchMovies();
-  //   }, []);
-
   const fetchMovies = (query) => {
     if (!query.trim()) return;
 
@@ -20,7 +16,8 @@ export const MovieContextProvider = ({ children }) => {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: `Bearer ${apikey}`,
+        // Authorization: `Bearer ${apikey}`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMDBiMDU4Mjc0NTA0M2EwOGYxYTNjNzViNjA1MjZkZSIsIm5iZiI6MTczNDM0ODAwMC4xMDMwMDAyLCJzdWIiOiI2NzYwMGNlMDMzM2U1NzVlNGY4NTA2NjQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.lEqJMCx1RX8jhTzkVJbD1lxaHIauaF2lskihty33UTc`,
       },
     };
 
