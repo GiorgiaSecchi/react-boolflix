@@ -18,7 +18,7 @@ export default function TvShowList() {
   };
 
   return (
-    <section className="mt-5">
+    <section className="mt-5 container">
       <h2 className="text-light">Serie TV:</h2>
       <ul className="list-group">
         {tvData.map((show) => (
