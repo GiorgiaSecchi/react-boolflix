@@ -9,22 +9,18 @@ export default function MovieList() {
       <div className="row g-4">
         <h2 className="text-light">Film:</h2>
 
-        {moviesData.length === 0 ? (
-          <p>Nessun film trovato.</p>
-        ) : (
-          moviesData.map((movie) => (
-            <div className="col-6 col-md-4 col-lg-3">
-              <Cards
-                key={movie.id}
-                title={movie.title}
-                originalTitle={movie.original_title}
-                language={movie.language}
-                vote={movie.vote}
-                image={movie.poster_path}
-              />
-            </div>
-          ))
-        )}
+        {moviesData.map((movie) => (
+          <div className="col-6 col-md-4 col-lg-3">
+            <Cards
+              key={movie.id}
+              title={movie.title}
+              originalTitle={movie.original_title}
+              language={movie.language}
+              vote={Math.ceil(movie.vote)}
+              image={movie.poster_path}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
