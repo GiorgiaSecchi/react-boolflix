@@ -59,9 +59,9 @@ body {
   text-align: center;
 }
 
-.card:hover {
-  /* transform: scale(1.05); */
-}
+/* .card:hover {
+  transform: scale(1.05);
+} */
 
 .card:hover .card-details {
   opacity: 1;
