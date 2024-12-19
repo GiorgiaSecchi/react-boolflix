@@ -15,11 +15,18 @@ export default function Cards({ title, originalTitle, language, vote, image }) {
     return imageUrl + size + poster;
   };
 
+  const placeholder =
+    "https://www.altavod.com/assets/images/poster-placeholder.png";
+
   return (
     <>
       <div className="col">
         <div className="card">
-          <img className="card-img" src={buildPosterUrl(image)} alt={title} />
+          <img
+            className="card-img"
+            src={image ? buildPosterUrl(image) : placeholder}
+            alt={title}
+          />
           <div className="card-details">
             <h5>"{title}"</h5>
             <h6>{originalTitle}</h6>
