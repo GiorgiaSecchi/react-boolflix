@@ -1,15 +1,31 @@
 import { useGlobalContext } from "../contexts/GlobalContext";
+import { useState, useEffect } from "react";
 import Cards from "./Cards";
 
 export default function MovieList() {
   const { moviesData } = useGlobalContext();
+  const [hasSearched, setHasSearched] = useState(false);
+
+  useEffect(() => {
+    if (moviesData.length > 0) {
+      setHasSearched(true);
+    }
+  }, [moviesData]);
 
   return (
     <section className="container">
       <div className="row g-4">
-        {moviesData.length === 0 ? (
-          <p className="text-light text-center">Nessun film trovato.</p>
-        ) : (
+        {!hasSearched && moviesData.length === 0 && (
+          <h2 className="text-light text-center">
+            Prova a cercare un film o una serie!
+          </h2>
+        )}
+
+        {hasSearched && moviesData.length === 0 && (
+          <h4 className="text-light text-center">Nessun film trovato 😞.</h4>
+        )}
+
+        {moviesData.length > 0 && (
           <>
             <h2 className="text-light">Film:</h2>
             {moviesData.map((movie) => (
@@ -28,6 +44,27 @@ export default function MovieList() {
       </div>
     </section>
   );
+}
+
+{
+  /* {moviesData.length === 0 ? (
+          <p className="text-light text-center">Nessun film trovato.</p>
+        ) : (
+          <>
+            <h2 className="text-light">Film:</h2>
+            {moviesData.map((movie) => (
+              <div className="col-6 col-md-4 col-lg-3" key={movie.id}>
+                <Cards
+                  title={movie.title}
+                  originalTitle={movie.original_title}
+                  language={movie.language}
+                  vote={Math.ceil(movie.vote)}
+                  image={movie.poster_path}
+                />
+              </div>
+            ))}
+          </>
+        )} */
 }
 
 // const formatLanguage = (language) => {
